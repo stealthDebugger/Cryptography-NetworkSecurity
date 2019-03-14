@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class CaesarCipher {
 
-    public static String encrypt(int shift,String plainText){
+    public static String encrypt(int shift,String plain){
 
-        plainText.toLowerCase();
+       String  plainText = plain.toLowerCase();
         String cipherText="";
         for(char c : plainText.toCharArray()){
             if(Character.isLetter(c)){
@@ -19,9 +19,10 @@ public class CaesarCipher {
         return cipherText;
     }
 
-    public static String decrypt(int shift,String cipherText){
+    public static String decrypt(int shift,String cipher ){
 
-        cipherText.toLowerCase();
+        String cipherText = cipher.toLowerCase();
+
         String plainText="";
         char ch;
         for(char c : cipherText.toCharArray()){
@@ -42,19 +43,19 @@ public class CaesarCipher {
         }
         return plainText;
     }
-
+    
     public static void main(String []args){
+        Scanner sc =new Scanner(System.in);
         String plainText;
         String cipherText;
         int shift;
         System.out.print("Enter Your plaintext : ");
-        plainText = new Scanner(System.in).nextLine();
+        plainText = sc.nextLine();
         System.out.print("Enter the Shift value : ");
-        shift = new Scanner(System.in).nextInt();
+        shift = sc.nextInt();
         cipherText = encrypt(shift,plainText);
         System.out.println("The Encrypted String is : "+cipherText);
         System.out.println("The decrypted String is : "+decrypt(shift,cipherText));
-
-
+        sc.close();
     }
 }
